@@ -399,9 +399,24 @@ footer{background:var(--green-deep);color:var(--cream);padding:60px 0 30px}
 .chat-input button:hover{background:var(--chili-deep);transform:scale(1.05)}
 
 /* ---------- MOBILE BAR ---------- */
-.mobile-bar{position:fixed;bottom:0;left:0;right:0;z-index:140;background:var(--surface);border-top:1px solid var(--border);
-  display:none;padding:10px 14px;gap:10px;box-shadow:0 -8px 30px rgba(11,36,21,.12)}
-.mobile-bar a{flex:1;justify-content:center;padding:13px}
+.mobile-bar{position:fixed;bottom:0;left:0;right:0;z-index:140;display:none;
+  padding:10px 14px calc(10px + var(--safe-b));
+  background:linear-gradient(to top,var(--green-deep) 55%,transparent);
+  pointer-events:none}
+.mobile-bar-inner{pointer-events:auto;display:flex;align-items:center;gap:8px;
+  background:rgba(18,52,31,.92);backdrop-filter:blur(16px) saturate(1.4);
+  border:1px solid rgba(247,243,234,.14);border-radius:20px;padding:8px;
+  box-shadow:0 14px 40px -12px rgba(0,0,0,.55)}
+.mb-icon{flex:0 0 auto;width:48px;height:48px;border-radius:15px;display:grid;place-items:center;
+  font-size:1.25rem;color:var(--cream);transition:transform .18s,background .2s;text-decoration:none}
+.mb-icon.call{background:rgba(247,243,234,.1);border:1px solid rgba(247,243,234,.12)}
+.mb-icon.wa{background:rgba(37,211,102,.16);border:1px solid rgba(37,211,102,.3);color:#4ade80}
+.mb-icon:active{transform:scale(.92)}
+.mb-book{flex:1;height:48px;border-radius:15px;display:flex;align-items:center;justify-content:center;gap:8px;
+  font-weight:800;font-size:.98rem;color:#3a2600;text-decoration:none;
+  background:linear-gradient(135deg,var(--gold-soft),var(--gold));
+  box-shadow:0 8px 20px -6px rgba(242,165,22,.55);transition:transform .18s}
+.mb-book:active{transform:scale(.97)}
 
 /* ---------- TOAST ---------- */
 .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);z-index:250;
@@ -466,8 +481,8 @@ footer{background:var(--green-deep);color:var(--cream);padding:60px 0 30px}
   .nav-cta .btn-primary{padding:10px 15px}
   .cart-btn{padding:10px 13px}
 
-  .mobile-bar{display:flex;padding-bottom:calc(10px + var(--safe-b))}
-  body{padding-bottom:calc(72px + var(--safe-b))}
+  .mobile-bar{display:block}
+  body{padding-bottom:calc(80px + var(--safe-b))}
   .chat-fab{bottom:calc(82px + var(--safe-b));right:calc(16px + var(--safe-r));width:56px;height:56px}
   .chat-fab img{width:30px;height:30px}
   .toast{bottom:calc(150px + var(--safe-b))}
@@ -548,7 +563,9 @@ footer{background:var(--green-deep);color:var(--cream);padding:60px 0 30px}
   .float-tag.price{right:-1%}
   .sec-head h2{font-size:1.7rem}
   .dish-img{width:104px}
-  .mobile-bar .btn{padding:12px 6px;font-size:.82rem;gap:5px}
+  .mb-book{font-size:.9rem}
+  .mb-icon{width:44px;height:44px}
+  .mb-book{height:44px}
   .rev-score .n{font-size:2.8rem}
   .foot-grid{grid-template-columns:1fr;text-align:center}
   .foot-col a:hover{padding-left:0}
@@ -905,9 +922,11 @@ footer{background:var(--green-deep);color:var(--cream);padding:60px 0 30px}
 
 <!-- MOBILE BAR -->
 <div class="mobile-bar">
-  <a href="tel:03316237717" class="btn btn-ghost" style="background:var(--green);color:#fff">📞 Call</a>
-  <a href="https://wa.me/923316237717" target="_blank" rel="noopener" class="btn btn-ghost" style="background:#25d366;color:#fff">💬 WhatsApp</a>
-  <a href="#reserve" class="btn btn-primary">📅 Book</a>
+  <div class="mobile-bar-inner">
+    <a href="tel:03316237717" class="mb-icon call" aria-label="Call 7 Spice">📞</a>
+    <a href="https://wa.me/923316237717" target="_blank" rel="noopener" class="mb-icon wa" aria-label="WhatsApp 7 Spice">💬</a>
+    <a href="#reserve" class="mb-book">📅 Book a Table</a>
+  </div>
 </div>
 
 <!-- TOAST -->
